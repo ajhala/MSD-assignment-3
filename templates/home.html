@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+<div class="jumbotron" style="z-index: 20; background-size: 100% auto; height:400px; background-image: url('https://thumbs.dreamstime.com/b/empty-wooden-photo-frame-farm-background-empty-wooden-photo-frame-paddy-farm-background-111650526.jpg');">
+  <h1 class="display-4">Nebraska Farmers Market</h1>
+  <p class="lead">Market to list local farm produce</p>
+    {% if user.is_authenticated %}
+        {% if user.is_seller %}
+            <p><a class="btn btn-primary" href="{% url 'market:produce_list1' %}" role="button">View My Produce &raquo;</a></p>
+        {% else %}
+            <p><a class="btn btn-primary" href="{% url 'market:produce_list' %}" role="button">View Listed Produce &raquo;</a></p>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock content %}

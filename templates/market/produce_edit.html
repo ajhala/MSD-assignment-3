@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Edit Listed produce</h1>
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+        seller: <b>{{ user.username }}</b><br><br>
+    <button class="btn btn-info ml-2" type="submit">Update</button> <br><br><br><br>
+</form>
+{% endblock content %}

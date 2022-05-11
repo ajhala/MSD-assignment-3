@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Produce_list{% endblock title %}
+
+{% block content %}
+  {% for userl in object_list %}
+    <div class="card" >
+      <div class="card-header">
+        <span class="font-weight-bold">Seller: <u>{{ userl.user.username }}</u> | </span>
+        <span class="font-weight-bold">Contact No: {{ userl.user.user_cell_phone }} | </span>
+        <span class="font-weight-bold">Email: {{ userl.user.email }}  </span> <br>
+
+        <span class="font-muted">Address: {{ userl.user.address }} | </span>
+        <span class="font-muted-">City: {{ userl.user.city }} | </span>
+        <span class="font-muted">State: {{ userl.user.state }} | </span>
+        <span class="font-muted">Zip: {{ userl.user.zipcode }}  </span>
+
+      </div>
+      <div class="card-body">
+        <span class="font-weight-bold">Crop: {{ userl.produce_name }}  </span>
+        <br><p>  {{ userl.description }}</p>
+        Quantity (Ton): <i>{{ userl.qty }}</i><br>
+        Price/Ton:   <i>${{ userl.price }}</i> <br><br>
+        <p>Listed: {{ userl.created}}  <!--|  Updated: --></p>
+
+      </div>
+      <div class="card-footer">
+        {% if user.is_authenticated %}
+            {% if user.is_seller %}
+                <a href="{% url 'market:produce_edit' userl.pk %}">Edit</a> |
+                <a href="{% url 'market:produce_delete' userl.pk %}">Delete</a>
+            {% endif %}
+        {% endif %}
+      </div>
+    </div>
+    <br />
+  {% endfor %}
+{% endblock content %}
