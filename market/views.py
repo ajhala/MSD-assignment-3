@@ -57,7 +57,7 @@ class ProduceCreateView(LoginRequiredMixin, CreateView):
 class SignUpView(generic.CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
-    template_name = 'registration/Signup.html'
+    template_name = 'registration/signup.html'
 
 
 @login_required
